@@ -26,6 +26,7 @@ export const StackNavigator = () => (
       cardStyle: {
         backgroundColor: 'white',
       },
+      headerShown: false,
     }}>
     <Stack.Screen
       name="Pagina1Screen"

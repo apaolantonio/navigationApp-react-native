@@ -4,7 +4,7 @@ import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
-import {StackNavigator} from './StackNavigator';
+// import {StackNavigator} from './StackNavigator';
 import {SettingsScreen} from '../screens/SettingsScreen';
 import {
   Image,
@@ -14,6 +14,8 @@ import {
   View,
 } from 'react-native';
 import {styles} from '../theme/appTheme';
+import {Tabs} from './Tabs';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Drawer = createDrawerNavigator();
 
@@ -32,7 +34,8 @@ export const MenuLateral = () => {
           shadowColor: 'transparent',
         },
       }}>
-      <Drawer.Screen name="StackNavigator" component={StackNavigator} />
+      <Drawer.Screen name="Tabs" component={Tabs} />
+      {/* <Drawer.Screen name="StackNavigator" component={StackNavigator} /> */}
       <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
     </Drawer.Navigator>
   );
@@ -54,14 +57,22 @@ const MenuInterno = ({navigation}: DrawerContentComponentProps) => {
       {/* Opciones de menú */}
       <View style={styles.menuContainer}>
         <TouchableOpacity
-          style={styles.menuBoton}
-          onPress={() => navigation.navigate('StackNavigator')}>
-          <Text style={styles.menuTexto}>Navegación</Text>
+          style={{
+            ...styles.menuBoton,
+            flexDirection: 'row',
+          }}
+          onPress={() => navigation.navigate('Tabs')}>
+          <Icon name="flashlight-outline" size={30} color="black" />
+          <Text style={styles.menuTexto}>Tabs</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.menuBoton}
+          style={{
+            ...styles.menuBoton,
+            flexDirection: 'row',
+          }}
           onPress={() => navigation.navigate('SettingsScreen')}>
+          <Icon name="musical-notes-outline" size={30} color="black" />
           <Text style={styles.menuTexto}>Ajustes</Text>
         </TouchableOpacity>
       </View>
