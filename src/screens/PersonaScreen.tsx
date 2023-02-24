@@ -3,18 +3,25 @@ import React, {useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {styles} from '../theme/appTheme';
 import {RootStackParams} from '../navigator/StackNavigator';
+import {useContext} from 'react';
+import {AuthContext} from '../context/AuthContext';
 interface Props extends StackScreenProps<RootStackParams, 'PersonaScreen'> {}
 // interface RouterParams {
 //   id: number;
 //   nombre: string;
 // }
 export const PersonaScreen = ({navigation, route}: Props) => {
+  const {changeUsername, authState} = useContext(AuthContext);
+
   const params = route.params;
   useEffect(() => {
     navigation.setOptions({
       title: params.nombre,
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    changeUsername(params.nombre);
   }, []);
 
   return (

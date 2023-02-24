@@ -17,7 +17,7 @@ export const TopTabNavigator = () => {
           let iconName: string = '';
           switch (route.name) {
             case 'Chat':
-              iconName = 'diamond-outline';
+              iconName = 'qr-code-outline';
               break;
             case 'Contact':
               iconName = 'ear-outline';
